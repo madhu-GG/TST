@@ -84,35 +84,6 @@ Node * insert(Node *parent, type* key, size_t key_len, void* value, int i)
         
         ptr->value_ptr = value;
         return parent;
-
-        // parent = calloc(1, sizeof(Node));
-        // parent->keyBit = key[i];
-        // parent->value_ptr = NULL;
-        // parent->next[0] = parent->next[1] = parent->next[2] = NULL;
-        // parent->count = 1;
-
-        // Node *ptr, *prev;
-        // prev = parent;
-
-        // while(i < key_len)
-        // {
-        //     i++;
-        //     ptr = calloc(1, sizeof(Node));
-        //     ptr->count = 1;
-        //     ptr->keyBit = key[i];
-        //     ptr->value_ptr = NULL;
-        //     ptr->next[0] = ptr->next[1] = ptr->next[2] = NULL;
-
-        //     prev->next[1] = ptr;
-        //     prev = ptr;            
-        // }
-
-        // if (i == key_len)
-        // {
-        //     ptr->value_ptr = value;
-        // }
-
-        // return parent;
     }
     else
     {
@@ -187,20 +158,6 @@ size_t findPrefix(Node* ptr, type* res_buf, size_t *res_len, type* key, size_t k
             return 0;
         }
     }
-
-    // if (depth == key_len - 1)
-    // {
-    //     if (key[depth] == ptr->keyBit && ptr->value_ptr != NULL)
-    //     {
-    //         res_buf[depth] = ptr->keyBit;
-    //         *res_len = depth + 1;
-    //         return depth + 1;
-    //     }
-    //     else
-    //     {
-    //         return 0;
-    //     }
-    // }
 
     if (key[depth] == ptr->keyBit)
     {
@@ -289,7 +246,7 @@ int main(int argc, char** argv)
     // uint8_t key2[] = {192, 168, 5}; // B
     // uint8_t key3[] = {192, 169, 10}; // C
     // uint8_t key4[] = {192, 169, 10, 1}; // D
-    uint8_t src1[] = {172, 168, 10, 20};
+    uint8_t src1[] = {172, 168, 10, 2};
 
     Test T[] = {
         {{192, 168}, 2, 'A'},
