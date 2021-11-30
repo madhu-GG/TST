@@ -45,7 +45,7 @@ static void visit(Node *ptr, uint8_t *key_buf, int depth)
     visit(ptr->next[2], key_buf, depth);
 }
 
-TST* TST_alloc(void)
+TST* tst_alloc(void)
 {
     TST* tst_ptr = malloc(sizeof(TST));
     if (tst_ptr != NULL)
@@ -55,7 +55,7 @@ TST* TST_alloc(void)
     }
 }
 
-void TST_free(TST* tst_ptr);
+void tst_free(TST* tst_ptr);
 
 Node * insert(Node *parent, type* key, size_t key_len, void* value, int i)
 {
@@ -144,7 +144,7 @@ Node * insert(Node *parent, type* key, size_t key_len, void* value, int i)
     }
 }
 
-bool TST_insert(TST* tst_ptr, type* key, size_t key_len, void* value)
+bool tst_insert(TST* tst_ptr, type* key, size_t key_len, void* value)
 {
     Node *ptr;
     if (tst_ptr == NULL || key == NULL || key_len == 0)
@@ -159,8 +159,8 @@ bool TST_insert(TST* tst_ptr, type* key, size_t key_len, void* value)
 }
 
 
-void* TST_get(TST* tst_ptr, type* key);
-void* TST_remove(TST* tst_ptr, type* key);
+void* tst_get(TST* tst_ptr, type* key);
+void* tst_remove(TST* tst_ptr, type* key);
 
 /*
  * perform DFS:
@@ -233,7 +233,7 @@ size_t findPrefix(Node* ptr, type* res_buf, size_t *res_len, type* key, size_t k
     }
 }
 
-type* TST_longestPrefix(TST* tst_ptr, size_t * ret_len, type* key, size_t key_len)
+type* tst_longestPrefix(TST* tst_ptr, size_t * ret_len, type* key, size_t key_len)
 {
     type *key_buf, *result_buf;
 
@@ -251,7 +251,7 @@ type* TST_longestPrefix(TST* tst_ptr, size_t * ret_len, type* key, size_t key_le
     return result_buf;
 }
 
-size_t TST_count(TST *tst_ptr)
+size_t tst_count(TST *tst_ptr)
 {
     if (tst_ptr == NULL)
     {
@@ -312,22 +312,22 @@ int main(int argc, char** argv)
     size_t res_len = 0;
     char v1 = 'A', v2='B', v3 = 'C', v4='D';
 
-    TST * tst = TST_alloc();
+    TST * tst = tst_alloc();
 
-    // TST_insert(tst, key1, 2, (void*)&v1);
-    // TST_insert(tst, key2, 3, (void*)&v2);
-    // TST_insert(tst, key3, 3, (void*)&v3);
-    // TST_insert(tst, key4, 4, (void*)&v4);
+    // tst_insert(tst, key1, 2, (void*)&v1);
+    // tst_insert(tst, key2, 3, (void*)&v2);
+    // tst_insert(tst, key3, 3, (void*)&v3);
+    // tst_insert(tst, key4, 4, (void*)&v4);
 
     for (int i = 0; T[i].key_len != 0; i++) {
-        TST_insert(tst, T[i].key, T[i].key_len, (void*) &T[i].value);
+        tst_insert(tst, T[i].key, T[i].key_len, (void*) &T[i].value);
     }
 
     tst_iter_print(tst);
     printf("Longest prefix search for: \n");
     print_key(src1, 4);
     printf("Result = \n");
-    uint8_t* res_buf = TST_longestPrefix(tst, &res_len, src1, 4);
+    uint8_t* res_buf = tst_longestPrefix(tst, &res_len, src1, 4);
     if (res_len == 0)
     {
         printf ("No longest prefix found!\n");
