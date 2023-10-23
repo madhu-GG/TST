@@ -12,7 +12,7 @@ $(BIN): $(SRC)
 	$(CC) $(CFLAGS) -o $@ $^ $(INC_FLAG)
 
 clean:
-	rm $(BIN) $(SRC_DIR)/*.o
+	rm -f $(BIN) $(SRC_DIR)/*.o
 
 debug: CFLAGS+=-g
 debug: $(BIN)

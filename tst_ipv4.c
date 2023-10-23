@@ -289,7 +289,7 @@ int main(int argc, char** argv)
     // uint8_t key2[] = {192, 168, 5}; // B
     // uint8_t key3[] = {192, 169, 10}; // C
     // uint8_t key4[] = {192, 169, 10, 1}; // D
-    uint8_t src1[] = {172, 168, 10, 20};
+    uint8_t src1[] = {192, 169, 11, 3};
 
     Test T[] = {
         {{192, 168}, 2, 'A'},
@@ -335,5 +335,6 @@ int main(int argc, char** argv)
     {
         print_key(res_buf, res_len);
     }
+
     return 0;
 }
